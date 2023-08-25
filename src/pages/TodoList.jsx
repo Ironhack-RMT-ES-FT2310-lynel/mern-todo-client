@@ -4,6 +4,7 @@ function TodoList() {
   return (
     <div>
       <AddForm />
+      <br />
       <hr />
       <h3>Lista de To-Do</h3>
     </div>

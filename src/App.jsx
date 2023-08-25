@@ -17,6 +17,9 @@ function App() {
     <>
       <Navbar />
 
+      <br />
+      <hr />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/todos" element={<TodoList />} />
