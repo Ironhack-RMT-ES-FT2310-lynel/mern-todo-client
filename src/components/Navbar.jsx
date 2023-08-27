@@ -16,7 +16,7 @@ function Navbar() {
   return (
     <nav>
       <NavLink to="/" style={toggleStyles}>Home</NavLink>
-      <NavLink to="/todos" end={true} style={toggleStyles}>Ver Lista</NavLink>
+      <NavLink to="/todo" end={true} style={toggleStyles}>Ver Lista</NavLink>
     </nav>
   );
 }
