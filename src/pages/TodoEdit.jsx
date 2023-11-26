@@ -3,15 +3,16 @@ import { useState } from "react";
 function TodoEdit() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [isUrgent, setIsUrgent] = useState(false);
+  const [isCompleted, setIsCompleted] = useState(false);
 
   const handleTitleChange = (e) => setTitle(e.target.value);
   const handleDescriptionChange = (e) => setDescription(e.target.value);
-  const handleIsUrgentChange = (e) => setIsUrgent(e.target.checked);
+  const handleIsCompletedChange = (e) => setIsCompleted(e.target.checked);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // ... edit the ToDo here
+
+    // ... contactar al backend para editar todas las propiedades del To-Do aqui
   };
 
   return (
@@ -19,7 +20,7 @@ function TodoEdit() {
       <h3>Editar To-Do</h3>
 
       <form onSubmit={handleSubmit}>
-        <label htmlFor="title">Title</label>
+        <label htmlFor="title">Title: </label>
         <input
           type="text"
           name="title"
@@ -29,7 +30,7 @@ function TodoEdit() {
 
         <br />
 
-        <label htmlFor="description">Description</label>
+        <label htmlFor="description">Description: </label>
         <input
           type="text"
           name="description"
@@ -39,12 +40,12 @@ function TodoEdit() {
 
         <br />
 
-        <label htmlFor="isUrgent">Urgent</label>
+        <label htmlFor="isCompleted">Completado: </label>
         <input
           type="checkbox"
-          name="isUrgent"
-          onChange={handleIsUrgentChange}
-          checked={isUrgent}
+          name="isCompleted"
+          onChange={handleIsCompletedChange}
+          checked={isCompleted}
         />
 
         <br />

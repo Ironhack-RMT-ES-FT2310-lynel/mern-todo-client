@@ -23,8 +23,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/todo" element={<TodoList />} />
-        <Route path="/todo/:id/details" element={<TodoDetails />} />
-        <Route path="/todo/:id/edit" element={<TodoEdit />} />
+        <Route path="/todo/:todoId/details" element={<TodoDetails />} />
+        <Route path="/todo/:todoId/edit" element={<TodoEdit />} />
 
         {/* error FE routes */}
         <Route path="/error" element={<Error />} />
