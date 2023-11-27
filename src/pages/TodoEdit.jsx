@@ -40,9 +40,39 @@ function TodoEdit() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     // ... contactar al backend para editar todas las propiedades del To-Do aqui
+
+    const updatedTodo = {
+      title,
+      description,
+      isCompleted
+    }
+
+    try {
+      
+      await service.put(`/todo/${params.todoId}`, updatedTodo)
+      navigate(`/todo/${params.todoId}/details`)
+
+    } catch (error) {
+      console.log(error)
+      navigate("/error")
+    }
+
   };
+
+  const handleDelete = async () => {
+
+    try {
+      
+      await service.delete(`/todo/${params.todoId}`)
+      navigate("/todo")
+
+    } catch (error) {
+      console.log(error)
+      navigate("/error")
+    }
+
+  }
 
   return (
     <div>
@@ -82,6 +112,10 @@ function TodoEdit() {
         <button type="submit">Editar</button>
         
       </form>
+
+      <hr />
+
+      <button style={{backgroundColor: "red"}} onClick={handleDelete}>Borrar</button>
     </div>
   );
 }
