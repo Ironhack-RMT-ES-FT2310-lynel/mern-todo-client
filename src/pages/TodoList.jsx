@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import AddForm from "../components/AddForm";
-import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+// import axios from "axios";
+import service from "../services/config";
 
 function TodoList() {
+
+  const navigate = useNavigate()
 
   const [ allTodos, setAllTodos ] = useState(null)
   const [ isLoading, setIsLoading ] = useState(true)
@@ -15,7 +19,8 @@ function TodoList() {
 
     try {
       
-      const response = await axios.get("http://localhost:5005/api/todo")
+      // const response = await axios.get("http://localhost:5005/api/todo")
+      const response = await service.get("/todo") // el url base lo toma del service baseURL
       console.log(response)
 
       //! 3
@@ -24,6 +29,7 @@ function TodoList() {
 
     } catch (error) {
       console.log(error)
+      navigate("/error")
     }
 
   }
@@ -35,7 +41,7 @@ function TodoList() {
 
   return (
     <div>
-      <AddForm />
+      <AddForm getData={getData}/>
 
       <br />
       <hr />
@@ -43,7 +49,10 @@ function TodoList() {
       {/* //! 5 */}
       {allTodos.map((eachTodo) => {
         return (
-          <p>{eachTodo.title}</p>
+          <div key={eachTodo._id}>
+            <Link to={`/todo/${eachTodo._id}/details`}>{eachTodo.title}</Link>
+            <span>{eachTodo.isCompleted ? "✅" : "⬅️"}</span>
+          </div>
         )
       })}
 
